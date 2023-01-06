@@ -1,10 +1,13 @@
 package com.example.myapplication.Class;
 
+import java.util.ArrayList;
+
 public class Livraison {
 
     private int id;
     private String client;
     private String adresse;
+    private ArrayList<Colis> listeColis;
 
 
     public Livraison(int id, String client, String adresse) {
@@ -40,7 +43,12 @@ public class Livraison {
         this.adresse = adresse;
     }
 
+    public void ajouterColis(Colis unColis){
+        listeColis.add(unColis);
+    }
 
-
+    public ArrayList<Colis> sendListeColis(){
+        return this.listeColis;
+    }
 
 }
