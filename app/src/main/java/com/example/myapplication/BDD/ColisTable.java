@@ -13,7 +13,7 @@ public class ColisTable {
             COL_REF +
             " TEXT PRIMARY KEY," +
             COL_MONTANT +
-            " INTEGER," +
+            " FLOAT," +
             COL_LIVRAISON +
             " INTEGER);";
 

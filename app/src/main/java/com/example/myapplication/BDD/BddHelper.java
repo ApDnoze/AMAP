@@ -17,8 +17,8 @@ public class BddHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(LivraisonTable.CREATE_TABLE);
-        db.execSQL(ColisTable.CREATE_TABLE);
+        db.execSQL(LivraisonTable.DROP_TABLE);
+        db.execSQL(ColisTable.DROP_TABLE);
         onCreate(db);
     }
 }
