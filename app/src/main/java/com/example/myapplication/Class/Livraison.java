@@ -15,7 +15,7 @@ public class Livraison {
         this.client = client;
         this.adresse = adresse;
     }
-    private Livraison(){
+    public Livraison(){
 
     }
 
