@@ -7,29 +7,35 @@
     tools:context=".Main">
 
     <Button
-        android:id="@+id/loading"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="Charger"
-        android:onClick="loadBdd"
-        />
-
-    <Button
         android:id="@+id/trier"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="goFilter"
         android:text="Trier"
         app:layout_constraintTop_toBottomOf="@+id/loading"
-        android:onClick="goFilter"
-        />
+        tools:layout_editor_absoluteX="130dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/loading"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:onClick="loadBdd"
+        android:text="Charger"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="285dp"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/show"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="showLivraison"
         android:text="Affichier"
         app:layout_constraintTop_toBottomOf="@+id/trier"
-        android:onClick="showLivraison"
-        />
+        tools:layout_editor_absoluteX="130dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
