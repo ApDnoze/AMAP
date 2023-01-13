@@ -7,13 +7,14 @@ public class Livraison {
     private int id;
     private String client;
     private String adresse;
-    private ArrayList<Colis> listeColis;
+    private ArrayList<Colis> listeColis = new ArrayList<Colis>();
 
 
     public Livraison(int id, String client, String adresse) {
         this.id = id;
         this.client = client;
         this.adresse = adresse;
+
     }
     public Livraison(){
 
@@ -44,7 +45,7 @@ public class Livraison {
     }
 
     public void ajouterColis(Colis unColis){
-        listeColis.add(unColis);
+        this.listeColis.add(unColis);
     }
 
     public ArrayList<Colis> sendListeColis(){

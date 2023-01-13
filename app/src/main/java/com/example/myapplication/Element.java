@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,15 +20,24 @@ public class Element extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
 
+        Log.i("test", "here1");
         Livraison uneLivraison = new Livraison(1, "Martin", "J'habite là");
-        uneLivraison.ajouterColis(new Colis("213", 25.5f, 1));
-        uneLivraison.ajouterColis(new Colis("465", 75.8f, 1));
+
+        Colis unColis = new Colis("213", 25.5f, 1);
+        Colis unAutreColis = new Colis("465", 75.8f, 1);
+        Log.i("test", unColis.getReference());
+        Log.i("test", "here2");
+        uneLivraison.ajouterColis(unColis);
+        uneLivraison.ajouterColis(unAutreColis);
+        Log.i("test", "here3");
 
         TextView nomTV = findViewById(R.id.nomProprio);
         TextView adresseTV = findViewById(R.id.adresseProprio);
+        Log.i("test", "here3");
 
         nomTV.setText(uneLivraison.getClient());
         adresseTV.setText(uneLivraison.getAdresse());
+
 
         ListView listeColisLV = findViewById(R.id.listeColis);
 
@@ -36,7 +46,9 @@ public class Element extends AppCompatActivity {
         ArrayAdapter<Colis> arrayAdapter = new ArrayAdapter<Colis>(
                 this,android.R.layout.simple_list_item_1 , uneLivraison.sendListeColis()
         );
-     
+
         listeColisLV.setAdapter(arrayAdapter);
+
+
     }
 }
