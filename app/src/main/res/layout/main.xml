@@ -7,35 +7,38 @@
     tools:context=".Main">
 
     <Button
-        android:id="@+id/trier"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:onClick="goFilter"
-        android:text="Trier"
-        app:layout_constraintTop_toBottomOf="@+id/loading"
-        tools:layout_editor_absoluteX="130dp"
-        tools:ignore="MissingConstraints" />
-
-    <Button
         android:id="@+id/loading"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:onClick="loadBdd"
         android:text="Charger"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="285dp"
-        tools:ignore="MissingConstraints" />
+        android:textSize="18dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="259dp" />
+
+    <Button
+        android:id="@+id/trier"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:onClick="goFilter"
+        android:text="Trier"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/loading"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="105dp" />
 
     <Button
         android:id="@+id/show"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
         android:onClick="showLivraison"
         android:text="Affichier"
+        android:textSize="18dp"
         app:layout_constraintTop_toBottomOf="@+id/trier"
-        tools:layout_editor_absoluteX="130dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="105dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
