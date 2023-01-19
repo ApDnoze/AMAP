@@ -48,6 +48,8 @@ public class Livraison {
         this.listeColis.add(unColis);
     }
 
+    public int nbColis(){ return this.listeColis.size(); }
+
     public ArrayList<Colis> sendListeColis(){
         return this.listeColis;
     }

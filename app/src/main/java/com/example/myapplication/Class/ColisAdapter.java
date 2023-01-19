@@ -1,6 +1,7 @@
 package com.example.myapplication.Class;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,8 @@ public class ColisAdapter extends ArrayAdapter<Colis> {
         Colis colis = getItem(position);
 
         refTV.setText(colis.getReference());
-        priceTV.setText((int) colis.getMontant());
+        priceTV.setText(String.valueOf(colis.getMontant()));
 
-        return null;
+        return ligneView;
     }
 }
