@@ -14,13 +14,14 @@ import com.example.myapplication.R;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ColisAdapter extends ArrayAdapter<Colis> {
 
     private int idPresentationLigne;
 
-    public ColisAdapter(@NonNull Context context, int resource, @NonNull List<Colis> objects) {
+    public ColisAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Colis> objects) {
         super(context, resource, objects);
         idPresentationLigne = resource;
     }
