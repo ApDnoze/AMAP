@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 public class Main extends AppCompatActivity {
 
@@ -15,6 +16,14 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        ImageView mImageView = findViewById(R.id.image_view_1);
+        mImageView.animate().rotation(360f).setDuration(4000).start();
+        try {
+            Log.i("tag","Test");
+            Thread.sleep(mImageView.animate().getDuration());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void loadBdd(View view) {
@@ -51,7 +60,8 @@ public class Main extends AppCompatActivity {
                 try
                 {
                     Thread.sleep(500);
-                    Log.i("Dieu", "Ici");
+
+                    Log.i("Dieu", String.valueOf(i));
                 } catch (InterruptedException e)
                 {
                     Log.i("Dieu", e.getMessage());
