@@ -37,7 +37,7 @@ public class Element extends AppCompatActivity {
 
         uneLivraison.ajouterColis(unColis);
         uneLivraison.ajouterColis(unAutreColis);
-
+    
         TextView nomTV = findViewById(R.id.nomProprio);
         TextView adresseTV = findViewById(R.id.adresseProprio);
         nomTV.setText(uneLivraison.getClient());

@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.propertie
-Element.java
+\app\src\main\java\com\example\myapplication\Element.java
