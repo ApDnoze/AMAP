@@ -37,7 +37,7 @@ public class Element extends AppCompatActivity {
 
         uneLivraison.ajouterColis(unColis);
         uneLivraison.ajouterColis(unAutreColis);
-        
+
         TextView nomTV = findViewById(R.id.nomProprio);
         TextView adresseTV = findViewById(R.id.adresseProprio);
         nomTV.setText(uneLivraison.getClient());
@@ -45,7 +45,7 @@ public class Element extends AppCompatActivity {
 
 
         ColisAdapter adapter = new ColisAdapter(this, R.layout.presentation_colis, uneLivraison.sendListeColis());
-        Log.i("here", "here");
+
         ListView listeColisLV = findViewById(R.id.listeColis);
         listeColisLV.setAdapter(adapter);
     }

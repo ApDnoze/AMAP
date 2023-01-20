@@ -50,6 +50,14 @@ public class Livraison {
 
     public int nbColis(){ return this.listeColis.size(); }
 
+    public float montantPrixLivraisonColis(){
+        float montant=0.0f;
+        for (Colis unColis: listeColis) {
+            montant+= unColis.getMontant();
+        }
+        return montant;
+    }
+
     public ArrayList<Colis> sendListeColis(){
         return this.listeColis;
     }
