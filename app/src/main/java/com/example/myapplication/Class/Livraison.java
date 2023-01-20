@@ -53,7 +53,7 @@ public class Livraison {
     public float montantPrixLivraisonColis(){
         float montant=0.0f;
         for (Colis unColis: listeColis) {
-            montant+= unColis.getMontant();
+            montant += unColis.getMontant();
         }
         return montant;
     }
