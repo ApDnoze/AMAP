@@ -42,7 +42,7 @@ public class AdapterListe extends ArrayAdapter<Livraison> {
         tvAdresse.setText(livraison.getAdresse());
 
         tvQuantite.setText(String.valueOf(livraison.nbColis()));
-        tvMontant.setText(String.valueOf(livraison.get));
+        tvMontant.setText(String.valueOf(livraison.montantPrixLivraisonColis()));
 
         return ligneView;
     }
