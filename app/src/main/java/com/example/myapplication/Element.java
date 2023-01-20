@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,5 +48,11 @@ public class Element extends AppCompatActivity {
         Log.i("here", "here");
         ListView listeColisLV = findViewById(R.id.listeColis);
         listeColisLV.setAdapter(adapter);
+    }
+
+    public void retourListeElemment(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }
