@@ -29,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void retourback(View view) {
+        Intent filter = new Intent(this, Main.class);
+        startActivity(filter);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
