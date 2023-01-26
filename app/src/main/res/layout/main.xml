@@ -42,11 +42,4 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="105dp" />
 
-    <ImageView
-        android:id="@+id/image_view_1"
-        android:layout_width="213dp"
-        android:layout_height="217dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/image" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

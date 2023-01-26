@@ -18,8 +18,6 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        ImageView mImageView = findViewById(R.id.image_view_1);
-        mImageView.animate().rotation(360f).setDuration(4000).start();
         fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
     }
 

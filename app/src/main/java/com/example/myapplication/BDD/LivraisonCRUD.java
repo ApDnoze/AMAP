@@ -52,4 +52,8 @@ public class LivraisonCRUD {
         }
         return resultat;
     }
+
+    public long delete (){
+        return db.delete(LivraisonTable.TABLE_NAME, null, null);
+    }
 }
