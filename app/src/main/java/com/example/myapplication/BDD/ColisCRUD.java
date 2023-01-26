@@ -80,4 +80,8 @@ public class ColisCRUD {
         return resultat;
     }
 
+    public long delete (){
+        return db.delete(ColisTable.TABLE_NAME, null, null);
+    }
+
 }
