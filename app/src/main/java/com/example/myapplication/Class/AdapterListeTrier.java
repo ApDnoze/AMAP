@@ -50,8 +50,8 @@ public class AdapterListeTrier extends ArrayAdapter<Livraison> {
 
             @Override
             public void onClick(View view) {
-                Log.i("tag", "here");
-                Toast.makeText(getContext(), "hello"+position, Toast.LENGTH_LONG);
+                Log.i("tag", "here is the position "+position);
+                //Toast.makeText(AdapterListeTrier.this, "position: "+position, Toast.LENGTH_SHORT).show();
             }
         });
 
