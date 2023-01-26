@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class BddHelper extends SQLiteOpenHelper {
-    public BddHelper(@Nullable Context context) { super(context, "fichier.db", null, 1);}
+    public BddHelper(@Nullable Context context) {
+        super(context, "fichier.db", null, 1);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
