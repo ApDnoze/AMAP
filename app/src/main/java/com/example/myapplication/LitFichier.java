@@ -30,7 +30,7 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
             parserFactory = XmlPullParserFactory.newInstance();
             parser = parserFactory.newPullParser();
             url = new URL(urls[0]);
-            Log.i("Dieu", urls[0]);
+            Log.i("tag", urls[0]);
             final InputStream is = url.openStream();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(is, null);
@@ -40,12 +40,12 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
             Colis colis = null;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                Log.i("Dieu", "tq");
+                Log.i("tag", "tq");
                 String eltName = null;
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         eltName = parser.getName();
-                        Log.i("Dieu", eltName);
+                        Log.i("tag", eltName);
                         if ("livraison".equals(eltName)) {
                             if (livraison != null) {
                                 this.lesLivraison.add(livraison);
