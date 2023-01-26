@@ -40,12 +40,10 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
             Colis colis = null;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                Log.i("tag", "tq");
                 String eltName = null;
                 switch (eventType) {
                     case XmlPullParser.START_TAG:
                         eltName = parser.getName();
-                        Log.i("tag", eltName);
                         if ("livraison".equals(eltName)) {
                             if (livraison != null) {
                                 this.lesLivraison.add(livraison);
