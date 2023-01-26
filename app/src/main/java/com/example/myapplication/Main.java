@@ -10,20 +10,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-public class Main extends AppCompatActivity {
+import java.util.concurrent.ExecutionException;
 
+public class Main extends AppCompatActivity {
+    LitFichier fichierlu = new LitFichier();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         ImageView mImageView = findViewById(R.id.image_view_1);
         mImageView.animate().rotation(360f).setDuration(4000).start();
-        try {
-            Log.i("tag","Test");
-            Thread.sleep(mImageView.animate().getDuration());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
     }
 
     public void loadBdd(View view) {
@@ -54,18 +51,22 @@ public class Main extends AppCompatActivity {
 
             //Ce qu'il faut faire pour récupérer les données XML en BackGround
 
-            for(int i = 0; i<=10; i++)
-            {
-                publishProgress(i);
-                try
-                {
-                    Thread.sleep(500);
+            Log.i("tag", "début");
 
-                    Log.i("Dieu", String.valueOf(i));
-                } catch (InterruptedException e)
-                {
-                    Log.i("Dieu", e.getMessage());
+            try{
+                if (fichierlu.get()){
+                    Log.i("tag", fichierlu.donneNoms());
+                    publishProgress(100);
                 }
+                else {
+                    Log.i("tag","pb de lecture sur le fichier");
+                }
+            }
+            catch (InterruptedException e){
+                Log.i("tag", "interruption lecture de fichiers");
+            }
+            catch (ExecutionException e){
+                Log.i("tag", "problème execution ");
             }
 
             return "C'est terminé";
