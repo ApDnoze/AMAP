@@ -18,6 +18,7 @@ import com.example.myapplication.Class.Livraison;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CLE_INTRA = "intra";
@@ -64,6 +65,26 @@ public class MainActivity extends AppCompatActivity {
         Log.i("TAG", String.valueOf(adapter));
         liste.setAdapter(adapter);
 
+        Log.i("Dieu", "début");
+        LitFichier fichierlu = new LitFichier();
+
+        fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
+
+        try{
+            if (fichierlu.get()){
+                Log.i("tag", fichierlu.donneNoms());
+
+            }
+            else {
+                Log.i("tag","pb de lecture sur le fichier");
+            }
+        }
+        catch (InterruptedException e){
+            Log.i("tag", "interruption lecture de fichiers");
+        }
+        catch (ExecutionException e){
+            Log.i("tag", "problème execution ");
+        }
 
 
 
