@@ -35,7 +35,7 @@ public class Main extends AppCompatActivity {
     }
 
     public void goFilter(View view) {
-        Intent filter = new Intent(this, MainActivity.class);
+        Intent filter = new Intent(this, Trier.class);
         startActivity(filter);
     }
 
