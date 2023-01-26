@@ -2,34 +2,25 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ArrayAdapter;
-
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
 
 import com.example.myapplication.Class.AdapterListe;
 import com.example.myapplication.Class.Colis;
-import com.example.myapplication.Class.ColisAdapter;
 import com.example.myapplication.Class.Livraison;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity {
-    public static final String CLE_INTRA = "intra";
+public class Trier extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
-
+        setContentView(R.layout.activity_trier);
     }
 
-    @Override
     protected void onResume() {
         super.onResume();
 
@@ -65,29 +56,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i("TAG", String.valueOf(adapter));
         liste.setAdapter(adapter);
 
-        Log.i("Dieu", "début");
-        LitFichier fichierlu = new LitFichier();
-
-        fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
-
-        try{
-            if (fichierlu.get()){
-                Log.i("tag", fichierlu.donneNoms());
-
-            }
-            else {
-                Log.i("tag","pb de lecture sur le fichier");
-            }
-        }
-        catch (InterruptedException e){
-            Log.i("tag", "interruption lecture de fichiers");
-        }
-        catch (ExecutionException e){
-            Log.i("tag", "problème execution ");
-        }
 
 
 
 
     }
+
 }
