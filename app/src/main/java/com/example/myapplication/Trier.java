@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ListView;
 
 import com.example.myapplication.Class.AdapterListe;
+import com.example.myapplication.Class.AdapterListeTrier;
 import com.example.myapplication.Class.Colis;
 import com.example.myapplication.Class.Livraison;
 
@@ -50,7 +51,7 @@ public class Trier extends AppCompatActivity {
         l3.ajouterColis(c6);
         listeLivraison.add(l3);
 
-        AdapterListe adapter = new AdapterListe(this,R.layout.liste,listeLivraison);
+        AdapterListeTrier adapter = new AdapterListeTrier(this,R.layout.liste,listeLivraison);
 
         ListView liste = findViewById(R.id.maliste);
         Log.i("TAG", String.valueOf(adapter));
