@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.Class.AdapterListe;
 import com.example.myapplication.Class.AdapterListeTrier;
@@ -52,11 +55,35 @@ public class Trier extends AppCompatActivity {
         l3.ajouterColis(c6);
         listeLivraison.add(l3);
 
+        Livraison l4 = new Livraison(4,"Martin","Paris");
+        Colis c7 = new Colis("1234568645",90,3);
+        Colis c8 = new Colis("1234568687",90,3);
+        l3.ajouterColis(c7);
+        l3.ajouterColis(c8);
+        listeLivraison.add(l4);
+
+
         AdapterListeTrier adapter = new AdapterListeTrier(this,R.layout.liste,listeLivraison);
 
         ListView liste = findViewById(R.id.maliste);
         Log.i("TAG", String.valueOf(adapter));
         liste.setAdapter(adapter);
+
+
+        liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Livraison laview = adapter.getItem(i);
+                adapter.remove(adapter.getItem(i));
+
+                adapter.insert(laview,0);
+
+
+
+
+
+            }
+        });
 
 
 

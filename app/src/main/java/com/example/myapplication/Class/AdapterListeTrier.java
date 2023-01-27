@@ -46,15 +46,6 @@ public class AdapterListeTrier extends ArrayAdapter<Livraison> {
         tvQuantite.setText(String.valueOf(livraison.nbColis()));
         tvMontant.setText(String.valueOf(livraison.montantPrixLivraisonColis()));
 
-        ligneView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Log.i("tag", "here is the position "+position);
-                //Toast.makeText(AdapterListeTrier.this, "position: "+position, Toast.LENGTH_SHORT).show();
-            }
-        });
-
         return ligneView;
     }
 }
