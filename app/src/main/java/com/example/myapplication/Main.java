@@ -70,7 +70,7 @@ public class Main extends AppCompatActivity {
                             colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
                         }
                     }
-                    Log.i("tag", lesLivraison.get());
+                    //Log.i("tag", lesLivraison.get());
 
 
 
