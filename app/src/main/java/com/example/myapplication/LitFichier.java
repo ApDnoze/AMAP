@@ -88,7 +88,7 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
         return liste;
     }
 
-    public List<Livraison> getLivrasion() {
+    public List<Livraison> geLivraison() {
 
         return lesLivraison;
     }

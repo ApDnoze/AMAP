@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,10 +11,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.myapplication.Class.Livraison;
+import com.example.myapplication.BDD.LivraisonCRUD;
+import com.example.myapplication.BDD.ColisCRUD;
+
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Main extends AppCompatActivity {
     LitFichier fichierlu = new LitFichier();
+    LivraisonCRUD livCrud = new LivraisonCRUD( this);
+    ColisCRUD colisCrud = new ColisCRUD(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +62,18 @@ public class Main extends AppCompatActivity {
             try{
                 if (fichierlu.get()){
                     Log.i("tag", fichierlu.donneNoms());
+
+                    List<Livraison> lesLivraison = fichierlu.geLivraison();
+                    for (int i = 0 ; i  >  lesLivraison.size(); i++ ) {
+                        livCrud.insert(lesLivraison.get(i));
+                        for (int l = 0 ; l  >  lesLivraison.get(i).sendListeColis().size(); l++ ) {
+                            colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
+                        }
+                    }
+                    Log.i("tag", lesLivraison.get());
+
+
+
                     publishProgress(100);
                 }
                 else {
