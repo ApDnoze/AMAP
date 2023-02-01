@@ -80,10 +80,11 @@ public class Trier extends AppCompatActivity {
         colisCrud.delete();
         livCrud.delete();
 
+
         List<Livraison> lesLivraison = lesLivraisons;
         for (int i = 0 ; i  <  lesLivraison.size(); i++ ) {
             livCrud.insert(lesLivraison.get(i));
-            for (int l = 0; l < lesLivraison.get(i).sendListeColis().size(); l++) {
+            for (int l = 0 ; l  <  lesLivraison.get(i).sendListeColis().size(); l++ ) {
                 colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
             }
         }

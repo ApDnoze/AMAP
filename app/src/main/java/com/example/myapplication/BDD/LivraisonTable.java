@@ -17,9 +17,9 @@ public class LivraisonTable {
             COL_CLIENT +
             " TEXT," +
             COL_RUE +
-            " TEXT);"+
+            " TEXT, "+
             COL_POSITION +
-            " INTEGER);";;
+            " INTEGER);";
 
     public static final String DROP_TABLE = "DROP TABLE "+ TABLE_NAME;
 }
