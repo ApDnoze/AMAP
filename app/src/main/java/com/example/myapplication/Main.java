@@ -74,7 +74,7 @@ public class Main extends AppCompatActivity {
                     }
                     //Log.i("tag", lesLivraison.get());
 
-
+                    Thread.sleep(3000);
 
                     publishProgress(100);
                 }
