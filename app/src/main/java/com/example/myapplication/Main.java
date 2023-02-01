@@ -20,12 +20,14 @@ import java.util.concurrent.ExecutionException;
 
 public class Main extends AppCompatActivity {
     LitFichier fichierlu = new LitFichier();
-    LivraisonCRUD livCrud = new LivraisonCRUD( this);
-    ColisCRUD colisCrud = new ColisCRUD(this);
+    LivraisonCRUD livCrud;
+    ColisCRUD colisCrud;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        livCrud = new LivraisonCRUD( this);
+        colisCrud = new ColisCRUD(this);
         fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
     }
 
