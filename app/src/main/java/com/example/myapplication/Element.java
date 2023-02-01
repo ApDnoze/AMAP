@@ -31,7 +31,7 @@ public class Element extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        Livraison uneLivraison = new Livraison(1, "Martin", "J'habite là");
+        Livraison uneLivraison = new Livraison(1, "Martin", "J'habite là",0);
         Colis unColis = new Colis("213", 25.5f, 1);
         Colis unAutreColis = new Colis("465", 75.8f, 1);
 

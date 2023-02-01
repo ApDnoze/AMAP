@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
 
         List<Livraison> listeLivraison = new ArrayList<Livraison>();
-        Livraison l1 = new Livraison(1,"Vincent","Orleans");
+        Livraison l1 = new Livraison(1,"Vincent","Orleans",0);
         Colis c1 = new Colis("1234",195,1);
         Colis c2 = new Colis("12345",5,1);
         l1.ajouterColis(c1);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Livraison l2 = new Livraison(2,"Beytullah","Mer");
+        Livraison l2 = new Livraison(2,"Beytullah","Mer",1);
         Colis c3 = new Colis("1234567",250,2);
         Colis c4 = new Colis("1234568",250,2);
         Colis c5 = new Colis("1234569",250,2);
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Livraison l3 = new Livraison(3,"Elijah","Vitry");
+        Livraison l3 = new Livraison(3,"Elijah","Vitry",2);
         Colis c6 = new Colis("12345686",90,3);
         l3.ajouterColis(c6);
         listeLivraison.add(l3);

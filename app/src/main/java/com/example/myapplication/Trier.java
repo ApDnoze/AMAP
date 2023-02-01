@@ -11,6 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.myapplication.BDD.ColisCRUD;
+import com.example.myapplication.BDD.LivraisonCRUD;
 import com.example.myapplication.Class.AdapterListe;
 import com.example.myapplication.Class.AdapterListeTrier;
 import com.example.myapplication.Class.Colis;
@@ -21,17 +23,25 @@ import java.util.List;
 
 public class Trier extends AppCompatActivity {
 
+    LivraisonCRUD livCrud;
+    ColisCRUD colisCrud;
+    List<Livraison> listeLivraison = new ArrayList<Livraison>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        livCrud = new LivraisonCRUD( this);
+        colisCrud = new ColisCRUD(this);
+
         setContentView(R.layout.activity_trier);
     }
 
     protected void onResume() {
         super.onResume();
 
-        List<Livraison> listeLivraison = new ArrayList<Livraison>();
-        Livraison l1 = new Livraison(1,"Vincent","Orleans");
+
+        Livraison l1 = new Livraison(1,"Vincent","Orleans",0);
         Colis c1 = new Colis("1234",195,1);
         Colis c2 = new Colis("12345",5,1);
         l1.ajouterColis(c1);
@@ -40,7 +50,7 @@ public class Trier extends AppCompatActivity {
 
 
 
-        Livraison l2 = new Livraison(2,"Beytullah","Mer");
+        Livraison l2 = new Livraison(2,"Beytullah","Mer",1);
         Colis c3 = new Colis("1234567",250,2);
         Colis c4 = new Colis("1234568",250,2);
         Colis c5 = new Colis("1234569",250,2);
@@ -51,12 +61,12 @@ public class Trier extends AppCompatActivity {
 
 
 
-        Livraison l3 = new Livraison(3,"Elijah","Vitry");
+        Livraison l3 = new Livraison(3,"Elijah","Vitry",2);
         Colis c6 = new Colis("12345686",90,3);
         l3.ajouterColis(c6);
         listeLivraison.add(l3);
 
-        Livraison l4 = new Livraison(4,"Martin","Paris");
+        Livraison l4 = new Livraison(4,"Martin","Paris",3);
         Colis c7 = new Colis("1234568645",90,3);
         Colis c8 = new Colis("1234568687",90,3);
         l3.ajouterColis(c7);
@@ -77,10 +87,12 @@ public class Trier extends AppCompatActivity {
                 Livraison laview = adapter.getItem(i);
                 adapter.remove(adapter.getItem(i));
 
-                adapter.insert(laview,0);
+                adapter.insert(laview, 0);
 
-
-
+                for (int j = 0; j < listeLivraison.size(); j++){
+                    adapter.getItem(j).setPosition(j);
+                    Log.i("TAG", String.valueOf(adapter.getItem(j).getPosition()));
+                }
 
 
             }
@@ -91,6 +103,18 @@ public class Trier extends AppCompatActivity {
 
 
     public void retourMenu(View view) {
+
+        colisCrud.delete();
+        livCrud.delete();
+
+        List<Livraison> lesLivraison = listeLivraison;
+        for (int i = 0 ; i  >  lesLivraison.size(); i++ ) {
+            livCrud.insert(lesLivraison.get(i));
+            for (int l = 0; l > lesLivraison.get(i).sendListeColis().size(); l++) {
+                colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
+            }
+        }
+
         Intent intent = new Intent(this, Main.class);
         startActivity(intent);
     }
