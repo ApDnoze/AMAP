@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.os.Bundle;
 import android.widget.Toolbar;
 
+import com.example.myapplication.BDD.ColisCRUD;
+import com.example.myapplication.BDD.LivraisonCRUD;
 import com.example.myapplication.Class.AdapterListe;
 import com.example.myapplication.Class.Colis;
 import com.example.myapplication.Class.ColisAdapter;
@@ -22,7 +24,12 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String CLE_INTRA = "intra";
+
+    LivraisonCRUD livCrud;
+    ColisCRUD colisCrud;
+    List<Colis> lesColis;
+    List<Livraison> lesLivraisons;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +38,12 @@ public class MainActivity extends AppCompatActivity {
         //Toolbar myToolBar = findViewById(R.id.my_toolbar);
         //setSupportActionBar(myToolBar);
 
+        livCrud = new LivraisonCRUD( this);
+        colisCrud = new ColisCRUD(this);
     }
 
     public void retourback(View view) {
-        Intent filter = new Intent(this, Main.class);
-        startActivity(filter);
+        onBackPressed();
     }
 
 
@@ -44,36 +52,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        List<Livraison> listeLivraison = new ArrayList<Livraison>();
-        Livraison l1 = new Livraison(1,"Vincent","Orleans");
-        Colis c1 = new Colis("1234",195,1);
-        Colis c2 = new Colis("12345",5,1);
-        l1.ajouterColis(c1);
-        l1.ajouterColis(c2);
-        listeLivraison.add(l1);
+        lesColis = colisCrud.get();
+        lesLivraisons = livCrud.get();
 
 
+        for (int l = 0; l < lesLivraisons.size(); l++){
+            for (int i = 0 ; i  <  lesColis.size(); i++ ) {
+                Log.i("tag", String.valueOf(lesLivraisons.get(l).getId()) +"=="+ String.valueOf(lesColis.get(i).getIdLivraison()));
+                if (lesLivraisons.get(l).getId() == lesColis.get(i).getIdLivraison()){
+                    lesLivraisons.get(l).ajouterColis(lesColis.get(i));
+                }
+            }
+        }
 
-        Livraison l2 = new Livraison(2,"Beytullah","Mer");
-        Colis c3 = new Colis("1234567",250,2);
-        Colis c4 = new Colis("1234568",250,2);
-        Colis c5 = new Colis("1234569",250,2);
-        l2.ajouterColis(c3);
-        l2.ajouterColis(c4);
-        l2.ajouterColis(c5);
-        listeLivraison.add(l2);
-
-
-
-        Livraison l3 = new Livraison(3,"Elijah","Vitry");
-        Colis c6 = new Colis("12345686",90,3);
-        l3.ajouterColis(c6);
-        listeLivraison.add(l3);
-
-        AdapterListe adapter = new AdapterListe(this,R.layout.liste,listeLivraison);
+        AdapterListe adapter = new AdapterListe(this,R.layout.liste,lesLivraisons);
 
         ListView liste = findViewById(R.id.maliste);
-        Log.i("TAG", String.valueOf(adapter));
         liste.setAdapter(adapter);
 
 
@@ -82,5 +76,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
-}
+}}
