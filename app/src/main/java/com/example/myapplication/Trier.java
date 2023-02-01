@@ -88,7 +88,7 @@ public class Trier extends AppCompatActivity {
             }
         }
 
-        Intent intent = new Intent(this, Main.class);
-        startActivity(intent);
+
+        onBackPressed();
     }
 }

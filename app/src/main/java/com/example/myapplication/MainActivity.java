@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     List<Colis> lesColis;
     List<Livraison> lesLivraisons;
 
-    public static final String CLE_INTRA = "intra";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void retourback(View view) {
-        Intent filter = new Intent(this, Main.class);
-        startActivity(filter);
+        onBackPressed();
     }
 
     @Override
