@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.example.myapplication.Class.AdapterListe;
 import com.example.myapplication.Class.Colis;
@@ -27,12 +28,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        //Toolbar myToolBar = findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolBar);
+
     }
 
     public void retourback(View view) {
         Intent filter = new Intent(this, Main.class);
         startActivity(filter);
     }
+
+
 
     @Override
     protected void onResume() {
@@ -70,26 +76,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("TAG", String.valueOf(adapter));
         liste.setAdapter(adapter);
 
-        Log.i("Dieu", "début");
-        LitFichier fichierlu = new LitFichier();
 
-        fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
 
-        try{
-            if (fichierlu.get()){
-                Log.i("tag", fichierlu.donneNoms());
-
-            }
-            else {
-                Log.i("tag","pb de lecture sur le fichier");
-            }
-        }
-        catch (InterruptedException e){
-            Log.i("tag", "interruption lecture de fichiers");
-        }
-        catch (ExecutionException e){
-            Log.i("tag", "problème execution ");
-        }
 
 
 
