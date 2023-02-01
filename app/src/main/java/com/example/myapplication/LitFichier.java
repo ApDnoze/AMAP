@@ -30,7 +30,6 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
             parserFactory = XmlPullParserFactory.newInstance();
             parser = parserFactory.newPullParser();
             url = new URL(urls[0]);
-            Log.i("tag", urls[0]);
             final InputStream is = url.openStream();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(is, null);
@@ -38,6 +37,9 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
             int eventType = parser.getEventType();
             Livraison livraison = null;
             Colis colis = null;
+
+            int idLiv = 0;
+            int posLiv = 0;
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String eltName = null;
@@ -49,6 +51,10 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
                                 this.lesLivraison.add(livraison);
                             }
                             livraison = new Livraison();
+                            livraison.setId(idLiv);
+                            idLiv++;
+                            livraison.setPosition(posLiv);
+                            posLiv++;
                         } else if (livraison != null) {
                             if ("client".equals(eltName)) {
                                 livraison.setClient(parser.nextText());
@@ -60,7 +66,7 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
                                 colis.setReference(parser.nextText());
                             } else if ("montant".equals((eltName))) {
                                 colis.setMontant(Float.parseFloat(parser.nextText()));
-                                Log.i("Dieu", colis.toString());
+                                colis.setIdLivraison(livraison.getId());
                                 livraison.ajouterColis(colis);
                             }
                         }
@@ -69,7 +75,6 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
                 }
                 eventType = parser.next();
             }
-            Log.i("Dieu", livraison.toString());
             this.lesLivraison.add(livraison);
         } catch (MalformedURLException | XmlPullParserException e) {
             Log.i("Dieu", e.toString());

@@ -6,6 +6,8 @@ public class LivraisonTable {
     public static final String COL_ID = "id";
     public static final String COL_CLIENT = "client";
     public static final String COL_RUE = "rue";
+    public static final String COL_POSITION = "position";
+
 
     public static final String CREATE_TABLE = "CREATE TABLE " +
             TABLE_NAME +
@@ -15,7 +17,9 @@ public class LivraisonTable {
             COL_CLIENT +
             " TEXT," +
             COL_RUE +
-            " TEXT);";
+            " TEXT);"+
+            COL_POSITION +
+            " INTEGER);";;
 
     public static final String DROP_TABLE = "DROP TABLE "+ TABLE_NAME;
 }

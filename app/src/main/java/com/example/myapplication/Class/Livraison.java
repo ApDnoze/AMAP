@@ -7,13 +7,15 @@ public class Livraison {
     private int id;
     private String client;
     private String adresse;
+    private int position;
     private ArrayList<Colis> listeColis = new ArrayList<Colis>();
 
 
-    public Livraison(int id, String client, String adresse) {
+    public Livraison(int id, String client,String adresse, int position) {
         this.id = id;
         this.client = client;
         this.adresse = adresse;
+        this.position = position;
 
     }
     public Livraison(){
@@ -42,6 +44,14 @@ public class Livraison {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public void ajouterColis(Colis unColis){

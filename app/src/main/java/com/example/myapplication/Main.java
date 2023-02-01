@@ -19,24 +19,25 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Main extends AppCompatActivity {
-    LitFichier fichierlu = new LitFichier();
+    LitFichier fichierlu;
     LivraisonCRUD livCrud;
     ColisCRUD colisCrud;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        fichierlu = new LitFichier();
         livCrud = new LivraisonCRUD( this);
         colisCrud = new ColisCRUD(this);
         fichierlu.execute("https://stpolsisl.fr/livraisons.xml");
     }
 
-    public void loadBdd(View view) {
-
-
+    public void loadBdd(View view) throws InterruptedException {
+        colisCrud.delete();
+        livCrud.delete();
         Loader progress = new Loader();
         progress.execute();
-
     }
 
     public void goFilter(View view) {
@@ -59,22 +60,19 @@ public class Main extends AppCompatActivity {
 
             //Ce qu'il faut faire pour récupérer les données XML en BackGround
 
-            Log.i("tag", "début");
 
             try{
                 if (fichierlu.get()){
-                    Log.i("tag", fichierlu.donneNoms());
 
                     List<Livraison> lesLivraison = fichierlu.geLivraison();
-                    for (int i = 0 ; i  >  lesLivraison.size(); i++ ) {
+                    for (int i = 0 ; i  <  lesLivraison.size(); i++ ) {
                         livCrud.insert(lesLivraison.get(i));
-                        for (int l = 0 ; l  >  lesLivraison.get(i).sendListeColis().size(); l++ ) {
+                        for (int l = 0 ; l  <  lesLivraison.get(i).sendListeColis().size(); l++ ) {
                             colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
                         }
                     }
-                    //Log.i("tag", lesLivraison.get());
 
-
+                    Thread.sleep(3000);
 
                     publishProgress(100);
                 }
