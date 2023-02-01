@@ -66,6 +66,7 @@ public class LitFichier extends AsyncTask<String, Void, Boolean> {
                                 colis.setReference(parser.nextText());
                             } else if ("montant".equals((eltName))) {
                                 colis.setMontant(Float.parseFloat(parser.nextText()));
+                                colis.setIdLivraison(livraison.getId());
                                 livraison.ajouterColis(colis);
                             }
                         }

@@ -36,7 +36,7 @@ public class LivraisonCRUD {
 
         Cursor cursor = db.query(
                 LivraisonTable.TABLE_NAME,
-                new String[]{LivraisonTable.COL_CLIENT, LivraisonTable.COL_RUE},
+                new String[]{LivraisonTable.COL_CLIENT, LivraisonTable.COL_RUE, LivraisonTable.COL_ID},
                 null,
                 null,
                 null,
@@ -47,6 +47,7 @@ public class LivraisonCRUD {
 
         while(cursor.moveToNext()){
             Livraison livraison = new Livraison();
+            livraison.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_ID))));
             livraison.setClient(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_CLIENT)));
             livraison.setAdresse(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_RUE)));
             resultat.add(livraison);
