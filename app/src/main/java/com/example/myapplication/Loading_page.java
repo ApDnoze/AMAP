@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class Loading_page extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class Loading_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_page);
 
+
         ImageView imgView = (ImageView) findViewById(R.id.image_view_1);
 
         ObjectAnimator animation;
@@ -27,6 +29,11 @@ public class Loading_page extends AppCompatActivity {
         animation.setDuration(4000);
 
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
+
+
+        Animation animZoomIn = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
+
+        imgView.startAnimation(animZoomIn);
 
         animation.addListener(new AnimatorListenerAdapter() {
             @Override
