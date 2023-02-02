@@ -61,7 +61,7 @@ public class Loading_page extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_in_right,
                             R.anim.slide_out_left);
                 } else {
-                    getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+                    startActivity(new Intent(Loading_page.this, Main.class));
                 }
             }
         });
