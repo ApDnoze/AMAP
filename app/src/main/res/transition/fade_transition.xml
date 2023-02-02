@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/material_motion_duration_long_1">
+    <style name="BaseAppTheme" parent="android:Theme.Material">
+    <!-- enable window content transitions -->
+    <item name="android:windowActivityTransitions"
+        tools:ignore="ExtraText">true</item>
+
+    <!-- specify enter and exit transitions -->
+    <item name="android:windowEnterTransition">@transition/explode</item>
+    <item name="android:windowExitTransition">@transition/explode</item>
+
+    <!-- specify shared element transitions -->
+    <item name="android:windowSharedElementEnterTransition">
+        @transition/change_image_transform</item>
+    <item name="android:windowSharedElementExitTransition">
+        @transition/change_image_transform</item>
+    </style>
+</transitionSet>

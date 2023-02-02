@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Trier">
 
-    <Button
-        android:id="@+id/btn_retour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/maliste"
-        android:layout_marginRight="10dp"
-        android:onClick="retourMenu"
-        android:text="Retour"
-        tools:ignore="MissingConstraints" />
-
     <ListView
         android:id="@+id/maliste"
         android:layout_width="match_parent"

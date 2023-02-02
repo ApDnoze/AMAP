@@ -5,17 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-
-    <Button
-        android:id="@+id/btn_retour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/maliste"
-        android:layout_marginRight="10dp"
-        android:onClick="retourback"
-        android:text="Retour"/>
-
     <ListView
         android:id="@+id/maliste"
         android:layout_width="match_parent"

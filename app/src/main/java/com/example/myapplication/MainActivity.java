@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        ActionBar actionBar =getSupportActionBar();
+        getSupportActionBar().setTitle("Liste des livraisons");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Toolbar myToolBar = findViewById(R.id.my_toolbar);
         //setSupportActionBar(myToolBar);
@@ -42,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         colisCrud = new ColisCRUD(this);
     }
 
-    public void retourback(View view) {
+    @Override
+    public boolean onSupportNavigateUp() {
         onBackPressed();
+        return super.onSupportNavigateUp();
     }
-
-
 
     @Override
     protected void onResume() {

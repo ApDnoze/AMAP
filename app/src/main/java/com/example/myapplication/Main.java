@@ -1,14 +1,21 @@
 package com.example.myapplication;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.myapplication.Class.Livraison;
@@ -27,6 +34,8 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        getSupportActionBar().hide();
+
         fichierlu = new LitFichier();
         livCrud = new LivraisonCRUD( this);
         colisCrud = new ColisCRUD(this);
@@ -42,12 +51,30 @@ public class Main extends AppCompatActivity {
 
     public void goFilter(View view) {
         Intent filter = new Intent(this, Trier.class);
-        startActivity(filter);
+        //startActivity(filter);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setExitTransition(new Explode());
+            startActivity(filter,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        } else {
+            getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        }
     }
 
     public void showLivraison(View view) {
         Intent filter = new Intent(this, MainActivity.class);
-        startActivity(filter);
+        //startActivity(filter);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setExitTransition(new Explode());
+            startActivity(filter,
+                    ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+        } else {
+            getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+        }
     }
 
     private class Loader extends AsyncTask<Void, Integer, String> {

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -31,11 +32,20 @@ public class Trier extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar =getSupportActionBar();
+        getSupportActionBar().setTitle("Trie de la liste");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         livCrud = new LivraisonCRUD( this);
         colisCrud = new ColisCRUD(this);
 
         setContentView(R.layout.activity_trier);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     protected void onResume() {
