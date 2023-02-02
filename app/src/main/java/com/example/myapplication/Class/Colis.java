@@ -39,4 +39,6 @@ public class Colis {
     public void setIdLivraison(int idLivraison) {
         this.idLivraison = idLivraison;
     }
+
+
 }

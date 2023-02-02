@@ -49,6 +49,24 @@ public class LivraisonCRUD {
         return resultat;
     }
 
+    @SuppressLint("Range")
+    public Livraison getFromId(int idLivraison){
+        Livraison livraison = new Livraison();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM livraison WHERE id="+idLivraison+";",
+                null);
+
+        while(cursor.moveToNext()){
+
+            livraison.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_ID))));
+            livraison.setClient(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_CLIENT)));
+            livraison.setAdresse(cursor.getString(cursor.getColumnIndex(LivraisonTable.COL_RUE)));
+            //Log.i("TAG", livraison.getClient());
+        }
+        return livraison;
+    }
+
     public long delete (){
         return db.delete(LivraisonTable.TABLE_NAME, null, null);
     }

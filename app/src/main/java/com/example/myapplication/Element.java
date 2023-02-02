@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.myapplication.BDD.ColisCRUD;
+import com.example.myapplication.BDD.LivraisonCRUD;
 import com.example.myapplication.Class.Colis;
 import com.example.myapplication.Class.ColisAdapter;
 import com.example.myapplication.Class.Livraison;
@@ -19,32 +21,40 @@ import java.util.List;
 
 public class Element extends AppCompatActivity {
 
+    LivraisonCRUD livCrud;
+    ColisCRUD colisCrud;
+    List<Colis> lesColis;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
 
-
+        livCrud = new LivraisonCRUD( this);
+        colisCrud = new ColisCRUD(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        Livraison uneLivraison = new Livraison(1, "Martin", "J'habite là",0);
-        Colis unColis = new Colis("213", 25.5f, 1);
-        Colis unAutreColis = new Colis("465", 75.8f, 1);
+        int idElement = (int) getIntent().getSerializableExtra("element");
 
-        uneLivraison.ajouterColis(unColis);
-        uneLivraison.ajouterColis(unAutreColis);
+        Livraison livraison = livCrud.getFromId(idElement);
+        lesColis = colisCrud.getId(livraison.getId());
+
+        livraison.setListColis(lesColis);
+
+
 
         TextView nomTV = findViewById(R.id.nomProprio);
         TextView adresseTV = findViewById(R.id.adresseProprio);
-        nomTV.setText(uneLivraison.getClient());
-        adresseTV.setText(uneLivraison.getAdresse());
+        nomTV.setText(livraison.getClient());
+        adresseTV.setText(livraison.getAdresse());
 
 
-        ColisAdapter adapter = new ColisAdapter(this, R.layout.presentation_colis, uneLivraison.sendListeColis());
+        ColisAdapter adapter = new ColisAdapter(this, R.layout.presentation_colis, (ArrayList<Colis>) livraison.sendListeColis());
 
         ListView listeColisLV = findViewById(R.id.listeColis);
         listeColisLV.setAdapter(adapter);

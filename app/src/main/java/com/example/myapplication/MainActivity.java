@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
@@ -20,6 +22,7 @@ import com.example.myapplication.Class.Colis;
 import com.example.myapplication.Class.ColisAdapter;
 import com.example.myapplication.Class.Livraison;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -75,7 +78,18 @@ public class MainActivity extends AppCompatActivity {
         liste.setAdapter(adapter);
 
 
+        liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Livraison laview = (Livraison) adapter.getItem(i);
 
+                Intent element = new Intent(MainActivity.this, Element.class);
+                element.putExtra("element", laview.getId());
+                startActivity(element);
+
+
+            }
+        });
 
 
 

@@ -1,14 +1,16 @@
 package com.example.myapplication.Class;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Livraison {
+public class Livraison implements Serializable {
 
     private int id;
     private String client;
     private String adresse;
     private int position;
-    private ArrayList<Colis> listeColis = new ArrayList<Colis>();
+    private List<Colis> listeColis = new ArrayList<Colis>();
 
 
     public Livraison(int id, String client,String adresse, int position) {
@@ -68,8 +70,10 @@ public class Livraison {
         return montant;
     }
 
-    public ArrayList<Colis> sendListeColis(){
+    public List<Colis> sendListeColis(){
         return this.listeColis;
     }
+
+    public void setListColis(List<Colis> list){this.listeColis = list; }
 
 }
