@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -30,9 +31,18 @@ public class Element extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
+        ActionBar actionBar =getSupportActionBar();
+        getSupportActionBar().setTitle("Affichage des colis.");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         livCrud = new LivraisonCRUD( this);
         colisCrud = new ColisCRUD(this);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
     }
 
     @Override
@@ -58,11 +68,5 @@ public class Element extends AppCompatActivity {
 
         ListView listeColisLV = findViewById(R.id.listeColis);
         listeColisLV.setAdapter(adapter);
-    }
-
-    public void retourListeElemment(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
     }
 }

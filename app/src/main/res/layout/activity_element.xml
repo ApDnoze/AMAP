@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Element">
 
-    <Button
-        android:id="@+id/btn_retour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/nomProprio"
-        android:layout_marginRight="10dp"
-        android:text="Retour"
-        android:onClick="retourListeElemment"></Button>
-
     <TextView
         android:id="@+id/nomProprio"
         android:layout_width="match_parent"
