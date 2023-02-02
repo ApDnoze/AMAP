@@ -3,11 +3,15 @@ package com.example.myapplication;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Parcelable;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
@@ -85,7 +89,15 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent element = new Intent(MainActivity.this, Element.class);
                 element.putExtra("element", laview.getId());
-                startActivity(element);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getWindow().setExitTransition(new Explode());
+                    startActivity(element);
+                    overridePendingTransition(R.anim.slide_in_right,
+                            R.anim.slide_out_left);
+                } else {
+                    startActivity(new Intent(MainActivity.this, Main.class));
+                }
 
 
             }

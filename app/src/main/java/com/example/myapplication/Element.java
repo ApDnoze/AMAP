@@ -32,7 +32,7 @@ public class Element extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_element);
         ActionBar actionBar =getSupportActionBar();
-        getSupportActionBar().setTitle("Affichage des colis.");
+        getSupportActionBar().setTitle("Détail de la livraison");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         livCrud = new LivraisonCRUD( this);
@@ -42,6 +42,8 @@ public class Element extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left,
+                R.anim.slide_out_right);
         return super.onSupportNavigateUp();
     }
 
