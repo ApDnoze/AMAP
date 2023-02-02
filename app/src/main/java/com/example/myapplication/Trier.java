@@ -44,6 +44,17 @@ public class Trier extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        colisCrud.delete();
+        livCrud.delete();
+
+
+        List<Livraison> lesLivraison = lesLivraisons;
+        for (int i = 0 ; i  <  lesLivraison.size(); i++ ) {
+            livCrud.insert(lesLivraison.get(i));
+            for (int l = 0 ; l  <  lesLivraison.get(i).sendListeColis().size(); l++ ) {
+                colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
+            }
+        }
         onBackPressed();
         return super.onSupportNavigateUp();
     }
@@ -82,24 +93,5 @@ public class Trier extends AppCompatActivity {
         });
 
 
-    }
-
-
-    public void retourMenu(View view) {
-
-        colisCrud.delete();
-        livCrud.delete();
-
-
-        List<Livraison> lesLivraison = lesLivraisons;
-        for (int i = 0 ; i  <  lesLivraison.size(); i++ ) {
-            livCrud.insert(lesLivraison.get(i));
-            for (int l = 0 ; l  <  lesLivraison.get(i).sendListeColis().size(); l++ ) {
-                colisCrud.insert(lesLivraison.get(i).sendListeColis().get(l));
-            }
-        }
-
-
-        onBackPressed();
     }
 }
