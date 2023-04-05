@@ -13,7 +13,7 @@ Projet répertoriant une application mobile Android sous Java récupérant une b
 - [@P3psHy](https://www.github.com/P3psHy)
 - [@beytullahsnk](https://www.github.com/beytullahsnk)
 - [@batistaUgo](https://www.github.com/batistaUgo)
-- [@flavien](https://www.github.com/flavien)
+- [@FlavienRG](https://www.github.com/FlavienRG)
  
 
 
